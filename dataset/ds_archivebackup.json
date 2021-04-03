@@ -13,7 +13,6 @@
 				"container": "archivebackup"
 			},
 			"columnDelimiter": ",",
-			"compressionCodec": "tar",
 			"escapeChar": "\\",
 			"quoteChar": "\""
 		},
