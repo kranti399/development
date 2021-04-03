@@ -5,20 +5,11 @@
 			"referenceName": "ls_storage",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"FileName": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": {
-					"value": "@concat(dataset().FileName,utcnow(),'.csv')",
-					"type": "Expression"
-				},
 				"container": "archivebackup"
 			},
 			"columnDelimiter": ",",

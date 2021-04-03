@@ -123,13 +123,7 @@
 				"outputs": [
 					{
 						"referenceName": "ds_archivebackup",
-						"type": "DatasetReference",
-						"parameters": {
-							"FileName": {
-								"value": "@{activity('Copy data source to sink').output}",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					}
 				]
 			}
