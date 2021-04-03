@@ -2,7 +2,7 @@
 	"name": "ds_copy_sink",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ls_blod_stirage",
+			"referenceName": "ls_storage",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
