@@ -5,6 +5,11 @@
 			"referenceName": "ls_storage",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"Name": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
