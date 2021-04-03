@@ -93,7 +93,7 @@
 									}
 								},
 								"fieldList": [
-									"childItems",
+									"itemName",
 									"lastModified"
 								],
 								"storeSettings": {
