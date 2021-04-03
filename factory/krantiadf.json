@@ -1,0 +1,9 @@
+{
+	"name": "krantiadf",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c24298af-caf9-43ea-b788-ff84e6877bf9",
+		"tenantId": "bf42f9c4-a806-4a3e-a595-9eb2819baf2e"
+	}
+}
