@@ -1,5 +1,5 @@
 {
-	"name": "ds_copy_source",
+	"name": "ds_source2",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_storage",
@@ -9,26 +9,12 @@
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation",
-				"container": "source"
+				"type": "AzureBlobStorageLocation"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"quoteChar": "\""
 		},
-		"schema": [
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			}
-		]
+		"schema": []
 	}
 }

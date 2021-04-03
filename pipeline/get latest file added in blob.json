@@ -20,8 +20,8 @@
 						"type": "DatasetReference"
 					},
 					"fieldList": [
-						"childItems",
-						"lastModified"
+						"lastModified",
+						"childItems"
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
@@ -64,7 +64,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataset": {
-									"referenceName": "ds_copy_source",
+									"referenceName": "ds_source2",
 									"type": "DatasetReference"
 								},
 								"fieldList": [
@@ -94,7 +94,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@greater(activity('Get Metadata inner side').output.Last modified,variables('maxtime'))",
+									"value": "@greater(activity('Get Metadata inner side').output.lastModified,variables('maxtime'))",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
@@ -106,7 +106,7 @@
 										"typeProperties": {
 											"variableName": "maxtime",
 											"value": {
-												"value": "@activity('Get Metadata inner side').output.Last modified",
+												"value": "@activity('Get Metadata inner side').output.lastModified",
 												"type": "Expression"
 											}
 										}
@@ -126,7 +126,7 @@
 										"typeProperties": {
 											"variableName": "filename",
 											"value": {
-												"value": "@activity('Get Metadata inner side').output.itemName",
+												"value": "@activity('Get Metadata inner side').output.name",
 												"type": "Expression"
 											}
 										}
@@ -140,7 +140,8 @@
 		],
 		"variables": {
 			"maxtime": {
-				"type": "String"
+				"type": "String",
+				"defaultValue": "1990-01-01"
 			},
 			"filename": {
 				"type": "String"
