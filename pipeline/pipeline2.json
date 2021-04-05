@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Get Metadata1",
+				"name": "Get all the file from the folder",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -33,11 +33,11 @@
 				}
 			},
 			{
-				"name": "ForEach1",
+				"name": "for each",
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Get Metadata1",
+						"activity": "Get all the file from the folder",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -46,7 +46,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Get Metadata1').output.childitems",
+						"value": "@activity('Get all the file from the folder').output.childitems",
 						"type": "Expression"
 					},
 					"activities": [
@@ -99,7 +99,22 @@
 								"expression": {
 									"value": "@greater(int(variables('DatewExtract_fromFileName')),int(variables('TakeAnyStartDate')))",
 									"type": "Expression"
-								}
+								},
+								"ifTrueActivities": [
+									{
+										"name": "Set variable2",
+										"type": "SetVariable",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "FinalOutput",
+											"value": {
+												"value": "@variables('GetLatestFileName')",
+												"type": "Expression"
+											}
+										}
+									}
+								]
 							}
 						}
 					]
@@ -117,6 +132,9 @@
 				"type": "String"
 			},
 			"DatewExtract_fromFileName": {
+				"type": "String"
+			},
+			"GetLatestFileName": {
 				"type": "String"
 			}
 		},
