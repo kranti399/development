@@ -5,6 +5,8 @@
 	"icons": [],
 	"author": "kranti.azurepractice399@gmail.com",
 	"annotations": [],
-	"services": [],
+	"services": [
+		"Azure Blob Storage"
+	],
 	"categories": []
 }
