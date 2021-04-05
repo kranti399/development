@@ -20,7 +20,8 @@
 						"type": "DatasetReference"
 					},
 					"fieldList": [
-						"childItems"
+						"childItems",
+						"lastModified"
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
@@ -64,7 +65,7 @@
 							}
 						},
 						{
-							"name": "Get Metadata2",
+							"name": "get file details",
 							"type": "GetMetadata",
 							"dependsOn": [
 								{
@@ -99,7 +100,6 @@
 								],
 								"storeSettings": {
 									"type": "AzureBlobStorageReadSettings",
-									"recursive": true,
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -112,7 +112,7 @@
 							"type": "IfCondition",
 							"dependsOn": [
 								{
-									"activity": "Get Metadata2",
+									"activity": "get file details",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -121,29 +121,29 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@greater(ticks(activity('Get Metadata2').output.lastModified),ticks(formatDateTime(variables('TimeAnyStartDate'))))",
+									"value": "@greater(ticks(activity('get file details').output.lastModified),ticks(formatDateTime(variables('TakeAnyStartDate'))))",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
 									{
-										"name": "Set variable2",
+										"name": "Set variable5",
 										"type": "SetVariable",
 										"dependsOn": [],
 										"userProperties": [],
 										"typeProperties": {
-											"variableName": "TimeAnyStartDate",
+											"variableName": "TakeAnyStartDate",
 											"value": {
-												"value": "@activity('Get Metadata2').output.lastModified",
+												"value": "@activity('get file details').output.lastMoadified",
 												"type": "Expression"
 											}
 										}
 									},
 									{
-										"name": "Set variable3",
+										"name": "Set variable6",
 										"type": "SetVariable",
 										"dependsOn": [
 											{
-												"activity": "Set variable2",
+												"activity": "Set variable5",
 												"dependencyConditions": [
 													"Succeeded"
 												]
@@ -151,9 +151,9 @@
 										],
 										"userProperties": [],
 										"typeProperties": {
-											"variableName": "GetlatestFileName",
+											"variableName": "filename",
 											"value": {
-												"value": "@activity('Get Metadata2').output.itemName",
+												"value": "@activity('get file details').output.itemName",
 												"type": "Expression"
 											}
 										}
@@ -179,16 +179,16 @@
 				"typeProperties": {
 					"variableName": "FinalOutput",
 					"value": {
-						"value": "@variables('Getlatestfile')",
+						"value": "@variables('GetlatestFileName')",
 						"type": "Expression"
 					}
 				}
 			}
 		],
 		"variables": {
-			"TimeAnyStartDate": {
+			"TakeAnyStartDate": {
 				"type": "String",
-				"defaultValue": "2010-10-29"
+				"defaultValue": "2020-10-10"
 			},
 			"filename": {
 				"type": "String"
