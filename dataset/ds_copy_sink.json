@@ -10,6 +10,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"folderPath": {
+					"value": "@concat('2020/',variables('max_date'))",
+					"type": "Expression"
+				},
 				"container": "sink"
 			},
 			"columnDelimiter": ",",
