@@ -131,7 +131,7 @@
 										"dependsOn": [],
 										"userProperties": [],
 										"typeProperties": {
-											"variableName": "Timeanydate",
+											"variableName": "TimeAnyStartDate",
 											"value": {
 												"value": "@activity('Get Metadata2').output.lastModified",
 												"type": "Expression"
@@ -151,7 +151,7 @@
 										],
 										"userProperties": [],
 										"typeProperties": {
-											"variableName": "Finaloutput",
+											"variableName": "GetlatestFileName",
 											"value": {
 												"value": "@activity('Get Metadata2').output.itemName",
 												"type": "Expression"
