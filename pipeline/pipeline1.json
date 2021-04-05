@@ -24,6 +24,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -98,6 +99,7 @@
 								],
 								"storeSettings": {
 									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -119,7 +121,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@greater(ticks(activity('Get Metadata2').output.lastModified),ticks(formatDateTime(variables('Timeanydate'))))",
+									"value": "@greater(ticks(activity('Get Metadata2').output.lastModified),ticks(formatDateTime(variables('TimeAnyStartDate'))))",
 									"type": "Expression"
 								},
 								"ifTrueActivities": [
@@ -175,7 +177,7 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "Finaloutput",
+					"variableName": "FinalOutput",
 					"value": {
 						"value": "@variables('Getlatestfile')",
 						"type": "Expression"
@@ -184,17 +186,17 @@
 			}
 		],
 		"variables": {
-			"Timeanydate": {
+			"TimeAnyStartDate": {
 				"type": "String",
 				"defaultValue": "2010-10-29"
 			},
 			"filename": {
 				"type": "String"
 			},
-			"Getlatestfile": {
+			"GetlatestFileName": {
 				"type": "String"
 			},
-			"Finaloutput": {
+			"FinalOutput": {
 				"type": "String"
 			}
 		},
