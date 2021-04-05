@@ -189,7 +189,8 @@
 		],
 		"variables": {
 			"TakeAnyStartDate": {
-				"type": "String"
+				"type": "String",
+				"defaultValue": "20001027"
 			},
 			"filename": {
 				"type": "String"
