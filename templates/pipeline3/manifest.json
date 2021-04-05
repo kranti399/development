@@ -1,0 +1,10 @@
+{
+	"name": "pipeline3",
+	"description": "{\n    \"name\": \"Get latest files_dateInFilename\",\n    \"properties\": {\n        \"activities\": [\n            {\n                \"name\": \"Get all the file from the folder\",\n                \"type\": \"GetMetadata\",\n                \"dependsOn\": [],\n                \"policy\": {\n                    \"timeout\": \"7.00:00:00\",\n                    \"retry\": 0,\n                    \"retryIntervalInSeconds\": 30,\n                    \"secureOutput\": false,\n                    \"secureInput\": false\n                },\n                \"userProperties\": [],\n                \"typeProperties\": {\n                    \"dataset\": {\n                        \"referenceName\": \"DelimitedText7\",\n                        \"type\": \"DatasetReference\"\n                    },\n                    \"fieldList\": [\n                        \"childItems\"\n                    ],\n                    \"storeSettings\": {\n                        \"type",
+	"image": "<svg width=\"400px\" height=\"240px\" viewBox=\"0 0 400 240\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" style=\"width: 400px; height: 240px;\"><g transform=\"matrix(1, 0, 0, 1, 0, 0)\" clip-path=\"url(#mainClip421378)\"><g transform=\"matrix(8, 0, 0, 8, 200, 120)\"/></g><clipPath id=\"mainClip421378\"><rect x=\"0\" y=\"0\" width=\"400px\" height=\"240px\"/></clipPath></svg>",
+	"icons": [],
+	"author": "kranti.azurepractice399@gmail.com",
+	"annotations": [],
+	"services": [],
+	"categories": []
+}
