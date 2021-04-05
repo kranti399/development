@@ -20,7 +20,8 @@
 						"type": "DatasetReference"
 					},
 					"fieldList": [
-						"childItems"
+						"childItems",
+						"lastModified"
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
@@ -169,7 +170,8 @@
 		],
 		"variables": {
 			"max_date": {
-				"type": "String"
+				"type": "String",
+				"defaultValue": "2010-10-10"
 			},
 			"current_date": {
 				"type": "String"
