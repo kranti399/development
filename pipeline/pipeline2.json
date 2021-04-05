@@ -84,7 +84,7 @@
 							}
 						},
 						{
-							"name": "If Condition1",
+							"name": "if condition",
 							"type": "IfCondition",
 							"dependsOn": [
 								{
@@ -107,7 +107,7 @@
 										"dependsOn": [],
 										"userProperties": [],
 										"typeProperties": {
-											"variableName": "FinalOutput",
+											"variableName": "DatewExtract_fromFileName",
 											"value": {
 												"value": "@variables('GetLatestFileName')",
 												"type": "Expression"
