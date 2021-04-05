@@ -100,6 +100,7 @@
 								],
 								"storeSettings": {
 									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -188,7 +189,7 @@
 		"variables": {
 			"TakeAnyStartDate": {
 				"type": "String",
-				"defaultValue": "2020-10-10"
+				"defaultValue": "4/5/2021, 9:29:10 PM"
 			},
 			"filename": {
 				"type": "String"
