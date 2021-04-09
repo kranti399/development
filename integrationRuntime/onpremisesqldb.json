@@ -1,0 +1,6 @@
+{
+	"name": "onpremisesqldb",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}
