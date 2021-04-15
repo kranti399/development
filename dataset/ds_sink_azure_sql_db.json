@@ -1,0 +1,16 @@
+{
+	"name": "ds_sink_azure_sql_db",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_sink_azure_sql_db",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "datatest"
+		}
+	}
+}
