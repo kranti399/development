@@ -1,0 +1,45 @@
+{
+	"name": "dataflow_Error_rows",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_source_error_rows",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_sink_bad_rows_azure_sql_db",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_azure_sql_db_error_rows",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
+				}
+			],
+			"transformations": [
+				{
+					"name": "ConditionalSplit1"
+				},
+				{
+					"name": "NewFileName"
+				},
+				{
+					"name": "DerivedColumn1"
+				}
+			],
+			"script": "source(output(\n\t\tOrderDate as string,\n\t\tRegion as string,\n\t\tRep as string,\n\t\tItem as string,\n\t\tUnits as string,\n\t\t{Unit Price} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 split(isNull(toDate(OrderDate, 'dd-MMM-yyyy')),\n\tdisjoint: false) ~> ConditionalSplit1@(ErrowRows, GoodRows)\nConditionalSplit1@ErrowRows derive(FileName = 'datafile') ~> NewFileName\nConditionalSplit1@GoodRows derive(OrderDate = toDate(OrderDate, 'dd-MMM-yyyy')) ~> DerivedColumn1\nNewFileName sink(input(\n\t\tOrderDate as string,\n\t\tRegion as string,\n\t\tRep as string,\n\t\tItem as string,\n\t\tUnits as string,\n\t\tUnit_Price as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\ttruncate:true,\n\tformat: 'table',\n\tmapColumn(\n\t\tOrderDate,\n\t\tRegion,\n\t\tRep,\n\t\tItem,\n\t\tUnits,\n\t\tUnit_Price = {Unit Price}\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> sink1\nDerivedColumn1 sink(input(\n\t\tOrderDate as date,\n\t\tRegion as string,\n\t\tRep as string,\n\t\tItem as string,\n\t\tUnits as string,\n\t\tUnit_Price as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\ttruncate:true,\n\tformat: 'table',\n\tmapColumn(\n\t\tOrderDate,\n\t\tRegion,\n\t\tRep,\n\t\tItem,\n\t\tUnits,\n\t\tUnit_Price = {Unit Price}\n\t),\n\tdateFormat:'dd/MM/yyyy',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> sink2"
+		}
+	}
+}

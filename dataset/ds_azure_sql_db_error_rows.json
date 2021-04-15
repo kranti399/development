@@ -1,0 +1,41 @@
+{
+	"name": "ds_azure_sql_db_error_rows",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azure_sql_db_error_rows",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "OrderDate",
+				"type": "date"
+			},
+			{
+				"name": "Region",
+				"type": "varchar"
+			},
+			{
+				"name": "Rep",
+				"type": "varchar"
+			},
+			{
+				"name": "Item",
+				"type": "varchar"
+			},
+			{
+				"name": "Units",
+				"type": "varchar"
+			},
+			{
+				"name": "Unit_Price",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "datafile"
+		}
+	}
+}
