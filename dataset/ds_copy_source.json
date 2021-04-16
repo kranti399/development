@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "P6-EuroDebtCrisis.csv",
 				"folderPath": "files",
 				"container": "source"
 			},
