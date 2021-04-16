@@ -1,0 +1,104 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "krantiadf"
+		},
+		"ds_sink_ne_azure_sql_db_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ds_sink_ne_azure_sql_db'"
+		},
+		"ls_azure_sql_db_error_rows_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_azure_sql_db_error_rows'"
+		},
+		"ls_sink_azure_sql_db_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_sink_azure_sql_db'"
+		},
+		"ls_source_error_rows_csv_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_source_error_rows_csv'"
+		},
+		"ls_source_find_out_value_csv_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_source_find_out_value_csv'"
+		},
+		"ls_storage_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_storage'"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "krantiadf_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ds_sink_ne_azure_sql_db_connectionString": {
+						"value": "[parameters('ds_sink_ne_azure_sql_db_connectionString')]"
+					},
+					"ls_azure_sql_db_error_rows_connectionString": {
+						"value": "[parameters('ls_azure_sql_db_error_rows_connectionString')]"
+					},
+					"ls_sink_azure_sql_db_connectionString": {
+						"value": "[parameters('ls_sink_azure_sql_db_connectionString')]"
+					},
+					"ls_source_error_rows_csv_connectionString": {
+						"value": "[parameters('ls_source_error_rows_csv_connectionString')]"
+					},
+					"ls_source_find_out_value_csv_connectionString": {
+						"value": "[parameters('ls_source_find_out_value_csv_connectionString')]"
+					},
+					"ls_storage_connectionString": {
+						"value": "[parameters('ls_storage_connectionString')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "krantiadf_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'krantiadf_ArmTemplate_0')]"
+			]
+		}
+	]
+}
